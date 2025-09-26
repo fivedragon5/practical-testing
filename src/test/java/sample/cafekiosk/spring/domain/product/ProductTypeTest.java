@@ -17,7 +17,7 @@ class ProductTypeTest {
         boolean result = ProductType.containsStockType(givenType);
 
         // then
-        assertThat(result).isTrue();
+        assertThat(result).isFalse();
     }
 
     @Test
