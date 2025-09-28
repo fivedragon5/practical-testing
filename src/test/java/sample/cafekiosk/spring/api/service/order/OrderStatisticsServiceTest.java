@@ -3,10 +3,10 @@ package sample.cafekiosk.spring.api.service.order;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.mockito.BDDMockito;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import sample.cafekiosk.spring.client.mail.MailSendClient;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import sample.cafekiosk.spring.domain.mail.MailSendHistoryRepository;
@@ -43,7 +43,7 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockitoBean
+    @Mock
     private MailSendClient mailSendClient;
 
     @AfterEach
@@ -72,8 +72,8 @@ class OrderStatisticsServiceTest {
         Order order3 = createPaymentCompletedOrder(LocalDateTime.of(2025, 9, 2, 23, 59, 59), products);
         Order order4 = createPaymentCompletedOrder(LocalDateTime.of(2025, 9, 3, 0, 0, 0), products);
 
-        Mockito.when(mailSendClient.sendMail(any(String.class), any(String.class), any(String.class), any(String.class)))
-                .thenReturn(true);
+        BDDMockito.given(mailSendClient.sendMail(any(String.class), any(String.class), any(String.class), any(String.class)))
+                .willReturn(true);
 
         // when
         boolean result = orderStatisticsService.sendOrderStatisticsMail(now.toLocalDate(), "test@test.com");

@@ -13,7 +13,6 @@ public class MailSendClient {
         log.info("To: " + toEmail);
         log.info("Subject: " + subject);
         log.info("Content: " + content);
-        throw new IllegalArgumentException("Mail sending failed");
-//        return true;
+        return true;
     }
 }
