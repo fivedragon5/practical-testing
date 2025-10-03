@@ -3,7 +3,7 @@ package sample.cafekiosk.spring.domain.order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
@@ -13,8 +13,7 @@ import sample.cafekiosk.spring.domain.product.ProductType;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@DataJpaTest
-class OrderRepositoryTest {
+class OrderRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderRepository orderRepository;
